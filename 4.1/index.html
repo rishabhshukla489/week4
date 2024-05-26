@@ -17,8 +17,14 @@
     function sum(){
         const a=document.getElementById("a").value;
         const b=document.getElementById("b").value;
-       console.log( document.getElementById("con").innerHTML);
-       document.getElementById("con").innerHTML=parseInt(a)+parseInt(b);
+      
+      const answer=document.getElementById("con");
+      fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b).then((response)=>{
+        response.text().then((data)=>{
+            answer.innerHTML=data
+        })
+      })
+    //    document.getElementById("con").innerHTML=parseInt(a)+parseInt(b);
     };
     
 </script>
