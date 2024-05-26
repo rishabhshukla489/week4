@@ -14,6 +14,14 @@
     }
 </style>
 <script>
+    let timeout;
+    function sumdebounce(){
+        clearTimeout(timeout);
+        timeout= setTimeout(() => {
+            sum()
+        }, 1000);
+        
+    }
     function sum(){
         const a=document.getElementById("a").value;
         const b=document.getElementById("b").value;
@@ -29,12 +37,12 @@
     
 </script>
 <body>
-    <input type="text" id="a">
+    <input oninput="sumdebounce()" type="text" id="a">
     <br>
     <br>
-    <input type="text" id="b">
+    <input oninput="sumdebounce()" type="text" id="b">
     <br><br>
-    <button onclick="sum()">SUM</button>
+    <!-- <button onclick="sum()">SUM</button> -->
     <div class="container" id="con"></div>
 </body>
 </html>
