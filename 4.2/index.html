@@ -51,15 +51,20 @@
             parent.appendChild(child);
         }
     }
-    updateDomAcctostate([{
-        title:"go",
-        description:"sd",
-        id:1
-    },{
-        title:"grrro",
-        description:"srd",
-        id:2
-    }])
+    // updateDomAcctostate([{
+    //     title:"go",
+    //     description:"sd",
+    //     id:1
+    // },{
+    //     title:"grrro",
+    //     description:"srd",
+    //     id:2
+    // }])
+    window.setInterval(async ()=>{
+        const res=await fetch("https://sum-server.100xdevs.com/todos");
+        const json=await res.json();
+        updateDomAcctostate(json.todos)
+    },2000)
   </script>
 </body>
 
