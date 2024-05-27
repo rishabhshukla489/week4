@@ -2,6 +2,17 @@
 <html>
 
 <head>
+  
+</head>
+
+<body>
+  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+  <!-- <button onclick="addTodo()">Add todo</button> -->
+
+  <div id="container">
+
+  </div>
   <script>
     let globalId = 1;
 
@@ -25,24 +36,32 @@
       child.setAttribute("id", id);
       return child;
     }
-    function addTodo() {
-      const title = document.getElementById("title").value;
-      const description = document.getElementById("description").value;
-      const parent = document.getElementById("todos");
+    // function addTodo() {
+    //   const title = document.getElementById("title").value;
+    //   const description = document.getElementById("description").value;
+    //   const parent = document.getElementById("todos");
 
-      parent.appendChild(createChild(title, description, globalId++));
+    //   parent.appendChild(createChild(title, description, globalId++));
+    // }
+    function updateDomAcctostate(state){
+        const parent= document.getElementById("container");
+        parent.innerHTML="";
+        for(let i=0;i<state.length;i++){
+            const child=createChild(state[i].title,state[i].description,state[i].id);
+            parent.appendChild(child);
+        }
     }
+    updateDomAcctostate([{
+        title:"go",
+        description:"sd",
+        id:1
+    },{
+        title:"grrro",
+        description:"srd",
+        id:2
+    }])
   </script>
-</head>
-
-<body>
-  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
-  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
-  <button onclick="addTodo()">Add todo</button>
-
-  <div id="todos">
-
-  </div>
 </body>
+
 
 </html>
